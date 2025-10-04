@@ -1,11 +1,11 @@
 const { plugin, commands, mode } = require('../lib');
-const { BOT_INFO, PREFIX }  = require('../config');
-const { version }   = require('../package.json');
-const { isUrls }    = require('../lib/extra');
-const os            = require('os');
+const { BOT_INFO, PREFIX } = require('../config');
+const { version } = require('../package.json');
+const { isUrls } = require('../lib/extra');
+const os = require('os');
 
-const runtime = secs => {
-  const pad = s => s.toString().padStart(2, '0');
+const runtime = (secs) => {
+  const pad = (s) => s.toString().padStart(2, '0');
   const h = Math.floor(secs / 3600);
   const m = Math.floor((secs % 3600) / 60);
   const s = Math.floor(secs % 60);
@@ -14,35 +14,35 @@ const runtime = secs => {
 
 const readMore = String.fromCharCode(8206).repeat(4001);
 
- const channelJid = "120363420208876417@newsletter";
-  const channelName = "© ᴘσωєʀє∂ ву 𝖐𝚊𝚒𝚜𝖊𝖓 𝙼ԃ⎯꯭̽💀";         
-  const serverMessageId = 1;
+const channelJid = "120363420641018865@newsletter";
+const channelName = "𝐑4𝐁𝐁𝐈𝐓-𝐌𝐈𝐍𝐈";
+const serverMessageId = 1;
 
 plugin({
-  pattern: 'menu|list',
-  desc: 'Displays the command menu',
+  pattern: 'menu|help|list',
+  desc: 'Stylish command list',
   type: 'whatsapp',
   fromMe: mode
 }, async (message) => {
+
   const [botName, rawMediaUrl] = BOT_INFO.split(';');
   const mediaUrl = rawMediaUrl?.replace(/&gif/g, '');
   const isGif = rawMediaUrl?.includes('&gif');
-  const userName = message.pushName || 'User';
+
   const usedGB = ((os.totalmem() - os.freemem()) / 1073741824).toFixed(2);
-  const totGB  = (os.totalmem() / 1073741824).toFixed(2);
-  const ram    = `${usedGB} / ${totGB} GB`;
+  const totGB = (os.totalmem() / 1073741824).toFixed(2);
+  const ram = `${usedGB} / ${totGB} GB`;
 
   let menuText = `
-*╭══〘〘 ${botName} 〙〙*
-*┃❍ ʀᴜɴ     :* ${runtime(process.uptime())}
-*┃❍ ᴍᴏᴅᴇ    :* ${mode ? 'Private' : 'Public'}
-*┃❍ ᴘʀᴇғɪx  :* ${PREFIX}
-*┃❍ ʀᴀᴍ     :* ${ram}
-*┃❍ ᴠᴇʀsɪᴏɴ :* v${version}
-*┃❍ ᴜsᴇʀ    :* ${userName}
-*╰═════════════════⊷*
+╭━━━〔 ⚡ ${botName} ⚡ 〕━━━╮
+│ 💀 *ᴠᴇʀꜱɪᴏɴ:* v${version}
+│ ⚙️ *ᴍᴏᴅᴇ:* ${mode ? 'Private' : 'Public'}
+│ 💾 *ʀᴀᴍ:* ${ram}
+│ ⏱️ *ᴜᴘᴛɪᴍᴇ:* ${runtime(process.uptime())}
+│ 💬 *ᴘʀᴇꜰɪx:* ${PREFIX}
+╰━━━━━━━━━━━━━━━━━━╯
 ${readMore}
-*♡︎•━━━━━━☻︎━━━━━━•♡︎*
+╭──❰ 💫 ᴄᴏᴍᴍᴀɴᴅ ʟɪꜱᴛ 💫 ❱──╮
 `;
 
   let cmnd = [], category = [];
@@ -56,52 +56,40 @@ ${readMore}
     }
   }
 
-  const BOT_INFO_FONT = process.env.BOT_INFO_FONT || '0;0';
-  const [typFont, ptrnFont] = BOT_INFO_FONT.split(';').map(f => isNaN(f) || parseInt(f) > 35 ? null : f);
-
   for (const cat of category.sort()) {
-    const typeTitle = typFont && typFont !== '0'
-      ? await fancy(cat, parseInt(typFont))
-      : `${cat}`;
-    menuText += `\n *╭────❒ ${typeTitle} ❒⁠⁠⁠⁠*\n`;
-
+    menuText += `\n┌──⟪ ${cat} ⟫──┐\n`;
     for (const { cmd, type } of cmnd.filter(c => c.type === cat)) {
-      const styled = ptrnFont && ptrnFont !== '0'
-        ? await fancy(cmd.trim(), parseInt(ptrnFont))
-        : `*├◈ ${cmd}*`;
-      menuText += ` ${styled}\n`;
+      menuText += `│ ⚡ ${cmd}\n`;
     }
-    menuText += ` *┕──────────────────❒*\n`;
+    menuText += `└───────────────┘\n`;
   }
 
-  menuText += `\n💖 *~_Made with love by KAISEN_~*`;
-
+  menuText += `
+💀 *ᴘᴏᴡᴇʀᴇᴅ ʙʏ 𝐌𝐑-𝐑4𝐁𝐁𝐈𝐓*
+`;
 
   try {
-  if (mediaUrl && isUrls(mediaUrl)) {
-    const opts = {
-      image: { url: mediaUrl }, 
-      caption: menuText,
-      mimetype: 'image/jpeg',
-          contextInfo: {
-      forwardingScore: 999,
-      isForwarded: true,
-      forwardedNewsletterMessageInfo: {
-        newsletterJid: channelJid,
-        newsletterName: channelName,
-        serverMessageId: serverMessageId
-      }
-     }
-    };
-
-    await message.client.sendMessage(message.jid, opts, { quoted: message });
-  } else {
-    await message.send(menuText);
-  }
-} catch (err) {
-  console.error('❌ Menu send error:', err);
-  await message.send(
-    menuText + `\n\n⚠️ *Media failed to load, sending text only.*`
-  );
+    if (mediaUrl && isUrls(mediaUrl)) {
+      const opts = {
+        image: { url: mediaUrl },
+        caption: menuText,
+        mimetype: 'image/jpeg',
+        contextInfo: {
+          forwardingScore: 999,
+          isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+            newsletterJid: channelJid,
+            newsletterName: channelName,
+            serverMessageId: serverMessageId
+          }
+        }
+      };
+      await message.client.sendMessage(message.jid, opts, { quoted: message });
+    } else {
+      await message.send(menuText);
+    }
+  } catch (err) {
+    console.error('❌ Menu send error:', err);
+    await message.send(menuText + `\n\n⚠️ *Media failed to load, sending text only.*`);
   }
 });
