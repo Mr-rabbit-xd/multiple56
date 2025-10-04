@@ -50,8 +50,8 @@ module.exports = {
   API_TYPE: process.env.API_TYPE || 'all',
   BRAINSHOP: process.env.BRAINSHOP || '172372,nbjE0YAlyw3cpoMl',
 
-  SUDO: process.env.SUDO || '917003816486',
-  ADMIN_NUMBER: process.env.ADMIN_NUMBER || '917003816486', // Admin number for notifications
+  SUDO: process.env.SUDO || '917439382677',
+  ADMIN_NUMBER: process.env.ADMIN_NUMBER || '917439382677', // Admin number for notifications
   RMBG_KEY: process.env.RMBG_KEY || '',
   GEMINI_API_KEY: process.env.GEMINI_API_KEY || '', // add your gemini api key here
   ELEVENLABS: process.env.ELEVENLABS || '',
