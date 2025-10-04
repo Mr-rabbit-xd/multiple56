@@ -86,7 +86,7 @@ async function songCommand(Aliconn, chatId, message) {
                 contextInfo: {
                     externalAdReply: {
                         title: dataa.title,
-                        body: 'ᴘσωєʀє∂ ву 𝖐𝚊𝚒𝚜𝖊𝖓 𝙼ԃ',
+                        body: 'ᴘσωєʀє∂ ву 𝐑4𝐁𝐁𝐈𝐓',
                         mediaType: 1,
                         sourceUrl: 'https://youtube.com',
                         thumbnailUrl: dataa.thumbnail
@@ -140,7 +140,7 @@ async function songCommand(Aliconn, chatId, message) {
             contextInfo: {
                 externalAdReply: {
                     title: `${datas.title}`,
-                    body: 'ᴘσωєʀє∂ ву 𝖐𝚊𝚒𝚜𝖊𝖓 𝙼ԃ',
+                    body: 'ᴘσωєʀє∂ ву 𝐑4𝐁𝐁𝐈𝐓-𝐌𝐈𝐍𝐈',
                     mediaType: 1,
                     sourceUrl: 'https://youtube.com',
                     thumbnailUrl: datas.thumbnail
