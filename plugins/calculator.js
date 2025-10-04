@@ -46,7 +46,7 @@ plugin({
         const response = `*🧮 Calculator*\n\n` +
             `*Expression:* ${expression}\n` +
             `*Result:* ${formattedResult}\n\n` +
-            `> © ᴘσωєʀє∂ ву 𝖐𝚊𝚒𝚜𝖊𝖓 𝙼ԃ⎯꯭̽💀`;
+            `> © ᴘσωєʀє∂ ву 𝐑4𝐁𝐁𝐈𝐓-𝐌𝐈𝐍𝐈💀`;
 
         await message.send(response);
 
@@ -154,7 +154,7 @@ plugin({
             `*Category:* ${category}\n` +
             `*From:* ${value} ${fromUnit}\n` +
             `*To:* ${formattedResult} ${toUnit}\n\n` +
-            `> © ᴘσωєʀє∂ ву 𝖐𝚊𝚒𝚜𝖊𝖓 𝙼ԃ⎯꯭̽💀`;
+            `> © ᴘσωєʀє∂ ву 𝐑4𝐁𝐁𝐈𝐓 𝐌𝐈𝐍𝐈💀`;
 
         await message.send(response);
 
