@@ -43,10 +43,10 @@ module.exports = {
   PERSONAL_MESSAGE: process.env.PERSONAL_MESSAGE || 'null',
   BOT_PRESENCE: process.env.BOT_PRESENCE || 'unavailable',
 
-  AUDIO_DATA: process.env.AUDIO_DATA || 'KAISEN-BOT-MD;bot;https://i.imgur.com/DyLAuEh.jpg',
-  STICKER_DATA: process.env.STICKER_DATA || 'KAISEN;bot',
+  AUDIO_DATA: process.env.AUDIO_DATA || '𝐑4𝐁𝐁𝐈𝐓;𝐌𝐈𝐍𝐈;https://i.imgur.com/DyLAuEh.jpg',
+  STICKER_DATA: process.env.STICKER_DATA || '𝐑4𝐁𝐁𝐈𝐓;𝐌𝐈𝐍𝐈',
   LIST_TYPE: process.env.LIST_TYPE || 'poll',
-  LINK_PREVIEW: process.env.LINK_PREVIEW || 'KAISEN;Bot;https://graph.org/file/1ec147e94d9775916e665.jpg',
+  LINK_PREVIEW: process.env.LINK_PREVIEW || '𝐑4𝐁𝐁𝐈𝐓;𝐌𝐈𝐍𝐈;https://graph.org/file/1ec147e94d9775916e665.jpg',
   API_TYPE: process.env.API_TYPE || 'all',
   BRAINSHOP: process.env.BRAINSHOP || '172372,nbjE0YAlyw3cpoMl',
 
