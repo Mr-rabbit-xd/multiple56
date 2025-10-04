@@ -46,8 +46,8 @@ plugin({
 
   const styledText = `◈ ${emoji}\n*╰┈➤ 𝐏O͒N͒𝐆: ${ping} ms*`;
 
-  const channelJid = "120363420208876417@newsletter";
-  const channelName = "𝖐𝚊𝚒𝚜𝖊𝖓 𝙼ԃ";         
+  const channelJid = "120363420641018865@newsletter";
+  const channelName = "𝐑4𝐁𝐁𝐈𝐓 𝐗𝐌𝐃";         
   const serverMessageId = 1;
 
   await message.client.sendMessage(message.jid, {
